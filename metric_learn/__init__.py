@@ -10,11 +10,12 @@ from .rca import RCA, RCA_Supervised
 from .mlkr import MLKR
 from .mmc import MMC, MMC_Supervised
 from .scml import SCML, SCML_Supervised
+from .nca_pos import NCA_POS
 
 from ._version import __version__
 
 __all__ = ['Constraints', 'Covariance', 'ITML', 'ITML_Supervised',
            'LMNN', 'LSML', 'LSML_Supervised', 'SDML',
            'SDML_Supervised', 'NCA', 'LFDA', 'RCA', 'RCA_Supervised',
-           'MLKR', 'MMC', 'MMC_Supervised', 'SCML',
+           'MLKR', 'MMC', 'MMC_Supervised', 'SCML', 'NCA_POS',
            'SCML_Supervised', '__version__']
