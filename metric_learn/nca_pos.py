@@ -123,7 +123,7 @@ class NCA_POS(MahalanobisMixin, TransformerMixin):
 
   def __init__(self, init='auto', n_components=None,
                max_iter=100, tol=None, verbose=False, preprocessor=None,
-               random_state=None, an93_pos_label=None, an93_optimize_neg_neg=False):
+               random_state=None, an93_pos_label=0, an93_optimize_neg_neg=False):
     self.n_components = n_components
     self.init = init
     self.max_iter = max_iter
@@ -154,6 +154,7 @@ class NCA_POS(MahalanobisMixin, TransformerMixin):
     # Run NCA
     eq_mask = labels[:, np.newaxis] == labels[np.newaxis, :]
     pos_mask = labels[:, np.newaxis] == self.an93_pos_label
+    print(f'NCA_POS: only consider {pos_mask.sum()} positive data')
     pos_pos_maxprob_mask = np.logical_and(eq_mask, pos_mask)
     pos_neg_minporb_mask = np.logical_and(~eq_mask, pos_mask)
     if self.an93_optimize_neg_neg:
