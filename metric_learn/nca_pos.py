@@ -156,7 +156,8 @@ class NCA_POS(MahalanobisMixin, TransformerMixin):
     pos_mask = labels[:, np.newaxis] == self.an93_pos_label
     print(f'NCA_POS: only consider {pos_mask.sum()} positive data')
     pos_pos_maxprob_mask = np.logical_and(eq_mask, pos_mask)
-    pos_neg_minporb_mask = np.logical_and(~eq_mask, pos_mask)
+    pos_neg_minporb_mask = ~eq_mask
+    # pos_neg_minporb_mask = np.logical_and(~eq_mask, pos_mask)
     if self.an93_optimize_neg_neg:
         neg_neg_maxprob_mask = np.logical_and(eq_mask, ~pos_mask)
     else:
